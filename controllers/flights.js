@@ -1,37 +1,50 @@
 const Flight = require('../models/flight')
+const Ticket = require("../models/ticket")
 
 module.exports = {
-    new: newFlight,
-    create,
-    index
-}
+  index,
+  new: newFlight,
+  create,
+  show
+};
 
 function index(req, res) {
-    Flight.find({}, function(err, flights) {
-        res.render('flights/index' , {
-            flights: flights,
-            title: 'All Flights'
-        })
-    })
+  Flight.find({}, function(err, flights) {
+    if (err) return next(err);
+    res.render("flights/index", { flights });
+  });
+}
+
+function newFlight(req, res) {
+  console.log(req.body);
+  res.render("flights/new");
 }
 
 function create(req, res) {
-    // remove whitespace next to commas
-    req.body.flightNumber = req.body.flightNumber.replace(/\s*,\s*/g, ',');
-    // split if it's not an empty string
-    if (req.body.flightNumber) req.body.flightNumber = req.body.flightNumber.split(',');
-    const flight = new Flight(req.body);
-    flight.save(function(err) {
-      // one way to handle errors
-      if (err) return res.render('flights/new');
-      console.log(flight);
-      // for now, redirect right back to new.ejs
-      res.redirect('/flights/new');
-    });
-  }
-
-
-function newFlight(req,res) {
-    res.render('flights/new', {title: 'Add Flight'})
+  console.log(req.body);
+  const flight = new Flight(req.body);
+  flight.save(function(err) {
+    if (err) return res.render("flights/new");
+    console.log(flight);
+    res.redirect("flights/");
+  });
 }
 
+function show(req, res) {
+  console.log(req.params);
+  Flight.findById(req.params.id, function(err, flight) {
+    if (err) return next(err);
+    Ticket.find({flight: flight._id}, function(err, tickets) {
+      console.log(tickets)
+      if (err) return next(err);
+
+      res.render("flights/show", { 
+        flight,
+        tickets });
+    })
+    
+  });
+}
+
+
+ 

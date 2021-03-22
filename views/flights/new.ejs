@@ -1,36 +1,55 @@
-<%- include('../partials/header') %>
-
-<form action="/flights" method="POST">
-    <label>Airline
-    <select name="airline">
-        <option value="Delta">Delta</option>
-        <option value="American">American</option>
-        <option value="Southwest">Southwest</option>
-        <option value="United">United</option>
-    </select>
-    </label><br>
-    <label>Airport:
-    <select name="airport">
-        <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
-        <option value="AUS">AUS</option>
-        <option value="SAN">SAN</option>
-        <option value="LAX">LAX</option>
-    </select> to
-    <select name="flightNumber">
-        <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
-        <option value="AUS">AUS</option>
-        <option value="SAN">SAN</option>
-        <option value="LAX">LAX</option>
-    </select>
-    </label><br>
-     <label>Flight Number:</label>
-    <input type="number" min="1" max="100" value="1">
-  </label><br>
-  <label>Departure:</label>
-     <input type="datetime-local" name="departs" value ="2021-03-22T15:30" min="2021-03-22T00:00" max="2022-03-22T00:00"><br>
-  <input type="submit" value="Add Flight">
-</form>   
-
-<%- include('../partials/footer') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>New Flight</title>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <section>
+    <h1>Book Flight</h1>
+    <form action="/flights" method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Airline</th>
+                    <th>Airport</th>
+                    <th>Departs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="number" required name="flightNo" class="short-input" min=10 max=9999 />
+                    </td>
+                    <td>
+                        <select name="airline">
+                            <option value="American">American</option>
+                            <option value="Southwest">Southwest</option>
+                            <option value="United">United</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="airport">
+                            <option value="AUS">AUS</option>
+                            <option value="DFW">DFW</option>
+                            <option value="DEN" selected>DEN</option>
+                            <option value="LAX">LAX</option>
+                            <option value="SAN">SAN</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="datetime-local" name="departs" value ="2021-03-22T15:30" min="2021-03-22T00:00" max="2022-03-22T00:00"><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <input type="submit" value="Save Flight">
+        </form>
+        </section>
+  </body>
+</html>

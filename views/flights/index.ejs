@@ -1,24 +1,36 @@
-<%- include('../partials/header') %>
-
-  <table id='list'>
-    <thead>
-      <tr>
-        <th>Airline</th>
-        <th>Airport</th>
-        <th>Flight #</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% flights.forEach((f) => { %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Flights</title>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <h1>Flight List</h1>
+    <table>
+      <thead>
         <tr>
-          <td><%= f.airline %></td>
-          <td><%= f.airport %></td>
-          <td><%= f.flightNo %></td>
-          <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
+          <th>Origin Airport</th>
+          <th>Airline</th>
+          <th>Flight Number</th>
+          <th>Departure Date and Time</th>
+          <th>Tickets Available</th>
+          <th>Flight Details</th>
         </tr>
-      <% }) %>
-    </tbody>
-  </table>
-
-  <%- include('../partials/footer') %>
+      </thead>
+      <tbody>
+        <% flights.forEach(function(f) { %>
+        <tr>
+          <td><%= f.airport %></td>
+          <td><%= f.airline %></td>
+          <td><%= f.flightNo %></td>
+          <td><%= f.departs %></td>
+          <td><a href="/flights/<%= f._id %>">Details</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>

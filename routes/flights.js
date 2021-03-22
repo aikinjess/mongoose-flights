@@ -1,8 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const flightsCtrl = require('../controllers/flights')
+const flightsCtrl = require("../controllers/flights");
 
-router.get('/new', flightsCtrl.new)
-router.post('/', flightsCtrl.create)
-router.get('/', flightsCtrl.index)
+/* GET home page. */
+router.get("/", flightsCtrl.index);
+router.get("/new", flightsCtrl.new);
+router.post("/", flightsCtrl.create);
+router.get("/:id", flightsCtrl.show);
+
 module.exports = router;
