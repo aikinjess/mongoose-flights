@@ -2,7 +2,7 @@
 <main id="show-flights-main">
         <aside>
             <div id="flight-info-title">
-                <h1>Flight Info</h1>
+                <h2>Flight Info</h2>
             </div>
                 
                 <section id="show-page">
@@ -13,10 +13,10 @@
                 </section>
         </aside>
         <div id="column-center">
-                <section id="add-destination">
+                <section class="add-destination">
                         <form action="/flights/<%= flight._id %>/destinations" method="POST" id="add-destination-form">
                             <h2>Add Destination</h2> 
-                                <select name="airport" id="select-destination">
+                                <select name="airport">
                                     <option value="DTW">DTW</option>
                                     <option value="JFK">JFK</option>
                                     <option value="LGA">LGA</option>
@@ -39,7 +39,7 @@
                 <section id="show-destinations">
                         <% if (flight.destinations.length) { %>
                             
-                            <table class="table">
+                            <table class="table" id = "destination-list">
                                 <thead>
                                     <th scope="col">
                                         Destination:
@@ -66,7 +66,8 @@
                 </section>
         </div>   
         <div id="column-right">
-                        <h2 id="tickets-header">Tickets <i class="fas fa-ticket-alt"></i></h2>
+          <section class="add-ticket">
+                        <h2 id="tickets-header">Tickets </h2>
                         <table class="table" id="tickets-table">
                             <thead>
                                 <th>
@@ -82,7 +83,7 @@
                                     <td><%= ticket.price %></td>
                                     <td>
                                         <form action="/tickets/<%= ticket._id %>?_method=DELETE" method="POST" id="delete-ticket">
-                                                <button type="submit" form="delete-ticket" class="btn btn-dark">Delete</button>
+                                          <button type="submit" form="deleteFlight" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -90,6 +91,7 @@
                         </table>
                     
                     <a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-dark btn-lg btn-block">Book a Ticket</a>
-</main>            
+</main>     
+</section>       
         </div>     
 <%- include('../partials/footer.ejs') %>

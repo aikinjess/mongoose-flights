@@ -10,10 +10,11 @@ body {
 	background-image: url('https://newcastlebeach.org/images/airplane-black-and-white-9.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 700px;
+	height: 50rem;
+	font-family:  Helvetica, Arial, sans-serif;
 }
 
-h1 {
+h1,p {
 	font-weight: 700;
 	padding: 20px 0 20px 0;
 	color:  rgb(245, 245, 245);
@@ -69,17 +70,20 @@ select,
 
 .show-info {
 	margin: 15px;
+	color: rgb(0, 8, 255);
+	
 }
 
 section {
 	margin: 10px;
 }
 
-#add-destination {
+.add-destination, .add-ticket {
 	background-color: rgb(245, 245, 245);
 	width: 95%;
 	padding: 15px;
 }
+
 
 #show-destinations {
 	width: 95%;
@@ -102,6 +106,7 @@ aside {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-emphasis-color: black;
 }
 
 #column-center {
@@ -134,16 +139,10 @@ aside {
 }
 
 #content-wrap {
-	padding-bottom: 2.5rem; /* Footer height */
+	padding-bottom: 2.5rem;
 }
 
-#footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 2.5rem;
-	background-color: #157df6;
-}
+
 
 #tickets-header {
 	margin-top: 10px;
