@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>New Flight</title>
-  </head>
-  <body>
-    <%- include('../partials/nav') %>
+<%- include('../partials/header.ejs') %>
     <section>
     <h1>Book Flight</h1>
     <form action="/flights" method="POST">
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Flight Number</th>
@@ -30,6 +21,7 @@
                             <option value="American">American</option>
                             <option value="Southwest">Southwest</option>
                             <option value="United">United</option>
+                            <option value="United">Delta</option>
                         </select>
                     </td>
                     <td>
@@ -48,7 +40,7 @@
             </tbody>
         </table>
         
-        <input type="submit" value="Save Flight">
+        <a href="/flights/new" class="btn btn-dark btn-lg btn-block">Book</a>
         </form>
         </section>
   </body>

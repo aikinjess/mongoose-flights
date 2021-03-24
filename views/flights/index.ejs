@@ -1,35 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Jessica's Booking Co.</title>
-  </head>
-  <body>
-    <%- include('../partials/nav') %>
-    <h1>All Flight</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Airport</th>
-          <th>Airline</th>
-          <th>Flight #</th>
-          <th>Departure</th>
-          <th>Flight Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% flights.forEach(function(f) { %>
-        <tr>
-          <td><%= f.airport %></td>
-          <td><%= f.airline %></td>
-          <td><%= f.flightNo %></td>
-          <td><%= f.departs %></td>
-          <td><a href="/flights/<%= f._id %>">Details</a></td>
-        </tr>
-        <% }); %>
-      </tbody>
+<%- include('../partials/header.ejs') %>
+    <h1>Flight List</h1>
+    <table class="table" id="flight-index">
+        <thead>
+            <th scope="col">Airline</th>
+            <th scope="col">Flight #</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Flight Details</th>
+            <th scope="col">Delete</th>
+        </thead>
+        <tbody>
+            <% flights.forEach(function(flight) { 
+                    let todayDate = new Date()
+                    let flightDate = flight.departs
+                    if (todayDate > flightDate) {
+                    
+                %>
+                <tr>
+                    <td class="departed"><%= flight.airline %></td>
+                    <td class="departed"><%= flight.flightNo %></td>
+                    <td class="departed">
+                        <%= flight.departs %>
+                    </td>
+                    <td><a href="/flights/<%= flight._id %>" class="btn btn-dark" role="button">Details</a></td>
+                    <td>
+                        <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST" id="deleteFlight">
+                            <button type="submit" form="deleteFlight" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            <% } else { %>
+                <tr>
+                    <td><%= flight.airline %></td>
+                    <td><%= flight.flightNo %></td>
+                    <td>
+                        <%= flight.departs %>
+                    </td>
+                    <td><a href="/flights/<%= flight._id %>" class="btn btn-dark" role="button">Details</a></td>
+                    <td>
+                        <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST" id="deleteFlight">
+                            <button type="submit" form="deleteFlight" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            <% }}); %>
+        </tbody>
     </table>
-  </body>
-</html>
+    <div id="add-flight">
+        <a href="/flights/new" class="btn btn-dark btn-lg btn-block">Book a Flight</a>
+    </div>
+<%- include('../partials/footer.ejs') %>
