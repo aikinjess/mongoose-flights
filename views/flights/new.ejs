@@ -1,47 +1,45 @@
 <%- include('../partials/header.ejs') %>
-    <section>
-    <h1>Book Flight</h1>
-    <form action="/flights" method="POST">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Flight Number</th>
-                    <th>Airline</th>
-                    <th>Airport</th>
-                    <th>Departs</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="number" required name="flightNo" class="short-input" min=10 max=9999 />
-                    </td>
-                    <td>
-                        <select name="airline">
-                            <option value="American">American</option>
-                            <option value="Southwest">Southwest</option>
-                            <option value="United">United</option>
-                            <option value="United">Delta</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select name="airport">
-                            <option value="AUS">AUS</option>
-                            <option value="DFW">DFW</option>
-                            <option value="DEN" selected>DEN</option>
-                            <option value="LAX">LAX</option>
-                            <option value="SAN">SAN</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="datetime-local" name="departs" value ="2021-03-22T15:30" min="2021-03-22T00:00" max="2022-03-22T00:00"><br>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <a href="/flights/new" class="btn btn-dark btn-lg btn-block">Book</a>
-        </form>
-        </section>
-  </body>
-</html>
+	<section>
+		<h1>Book Flight</h1>
+		<form action="/flights" method="POST">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Flight Number</th>
+						<th>Airline</th>
+						<th>Airport</th>
+						<th>Departs</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input type="number" required name="flightNo" class="short-input" min=10 max=9999 /> </td>
+						<td>
+							<select name="airline">
+								<option value="American">American</option>
+								<option value="Southwest">Southwest</option>
+								<option value="United">United</option>
+								<option value="Delta">Delta</option>
+							</select>
+						</td>
+						<td>
+							<select name="airport">
+								<option value="AUS">AUS</option>
+								<option value="DFW">DFW</option>
+								<option value="DEN" >DEN</option>
+								<option value="LAX" selected>LAX</option>
+								<option value="SAN">SAN</option>
+							</select>
+						</td>
+						<td>
+							<input type="datetime-local" name="departs" value="2021-03-22T15:30" min="2021-03-22T00:00" max="2022-03-22T00:00">
+							<br> </td>
+					</tr>
+				</tbody>
+			</table> <a href="/flights/new" class="btn btn-dark btn-lg btn-block">Book</a> </form>
+	</section>
+	</body>
+
+	</html>
+	<%- include('../partials/footer.ejs') %>
