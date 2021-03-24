@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const destinationSchema = new Schema({
   airport: {
     type: String,
-    type: String
+    type: ["DFW", "DEN", "AUS", "SAN", "LAX"]
   },
   arrival: {
     type: Date
